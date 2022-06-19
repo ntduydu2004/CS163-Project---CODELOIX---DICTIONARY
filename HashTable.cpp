@@ -36,7 +36,7 @@ int HashTable::GetHash(string &s) {
 
     int res = 0, p = P;
     for (char &c: s) {
-        res += (c * p) % N;
+        res = (res + c * p) % N;
         p = (p * P) % N;
     }
     return res;
@@ -61,7 +61,7 @@ void HashTable::displayChain() {
         if (List[i].pHead != nullptr) {
             HashNode* current = List[i].pHead;
             while (current != nullptr) {
-                cout << current->data << " ---- ";
+                cout << current->data << "      ";
                 current = current->pNext;
             }
         }
