@@ -17,10 +17,10 @@ using namespace std;
 
 Word::~Word() {
     for (IntVecString &c: typeDefEx) {
-        while (!c.S.empty()) c.S.pop_back();
+        c.S.clear();
     }
-    while (!typeDefEx.empty()) typeDefEx.pop_back();
-    while (!trans.empty()) trans.pop_back();
+    typeDefEx.clear();
+    trans.clear();
 }
 
 //Inner Functionsssssssssssssssssssssssssssssssssssssss
