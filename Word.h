@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 typedef std::vector <std::string> VecString;
 typedef std::pair <int, VecString > IntVecString;
@@ -24,3 +25,4 @@ struct Word
 
 std::string GetDefString(int Def);
 int GetDefInt(std::string Def);
+void readData(std::vector<Word> &vietanh, std::ifstream &fin);
