@@ -1,3 +1,4 @@
+#include "Word.h"
 #include "HashTable.h"
 
 #include <iostream>
@@ -8,7 +9,7 @@
 using namespace std;
 
 HashNode::HashNode(string &_data) {
-    data = _data;
+    data.Key = _data;
 }
 
 HashTable::HashTable(int _P, int _N) {
@@ -42,7 +43,7 @@ int HashTable::GetHash(string &s) {
     return res;
 }
 
-void HashTable::insertBucket(string &s) {
+void HashTable::InsertNewWord(string &s) {
     int location = GetHash(s);
     if (List[location].pHead == nullptr) {
         HashNode* temp = new HashNode(s);
@@ -61,7 +62,7 @@ void HashTable::displayChain() {
         if (List[i].pHead != nullptr) {
             HashNode* current = List[i].pHead;
             while (current != nullptr) {
-                cout << current->data << "      ";
+                cout << current->data.Key << "      ";
                 current = current->pNext;
             }
         }
@@ -69,13 +70,13 @@ void HashTable::displayChain() {
     }
 }
 
-void HashTable::deleteBucket(string &s) {
+void HashTable::DeleteWord(string &s) {
     int location = GetHash(s);
     if (List[location].pHead == nullptr) return;
 
-    if (List[location].pHead->data == s) {
+    if (List[location].pHead->data.Key == s) {
         HashNode* pD = List[location].pHead;
-        if (List[location].pTail->data == s) List[location].pTail = nullptr;
+        if (List[location].pTail->data.Key == s) List[location].pTail = nullptr;
         List[location].pHead = List[location].pHead->pNext;
         delete pD;
         pD = nullptr;
@@ -84,7 +85,7 @@ void HashTable::deleteBucket(string &s) {
         HashNode* Cur = List[location].pHead;
         while (Cur->pNext) {
 
-            if (Cur->pNext->data == s) {
+            if (Cur->pNext->data.Key == s) {
                 HashNode* pD = Cur->pNext;
                 if (Cur->pNext == List[location].pTail) List[location].pTail = Cur;
                 Cur->pNext = Cur->pNext->pNext;
@@ -105,7 +106,7 @@ HashNode* HashTable::FindWord(string &s) {
     HashNode* Cur = List[HashKey].pHead;
 
     while (Cur) {
-        if (Cur->data == s) return Cur;
+        if (Cur->data.Key == s) return Cur;
         Cur = Cur->pNext;
     }
 
