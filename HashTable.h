@@ -1,9 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include "Word.h"
 
 struct HashNode {
-    std::string data;
+    Word data;
     HashNode* pNext = nullptr;
 
     HashNode (std::string &_data);
@@ -20,9 +21,11 @@ struct HashTable {
 
     HashTable(int _P, int _N);
     ~HashTable();
+
     int GetHash(std::string &s);
-    void insertBucket(std::string &s);
+    void InsertNewWord(std::string &s);
+
     void displayChain();
-    void deleteBucket(std::string &s);
+    void DeleteWord(std::string &s);
     HashNode* FindWord(std::string &s);
 };
