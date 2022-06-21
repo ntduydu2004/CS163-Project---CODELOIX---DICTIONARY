@@ -5,6 +5,7 @@
 
 using namespace std;
 
+#include "Word.h"
 #include "HashTable.h"
 
 
