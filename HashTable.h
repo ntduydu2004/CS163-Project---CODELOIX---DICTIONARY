@@ -31,4 +31,5 @@ struct HashTable {
     HashNode* FindWord(std::string &s);
 
     void FileInput(std::string &Filename);
+    void ShowAllWord();
 };

@@ -44,15 +44,16 @@ void Word::AddTrans(string &Trans) {
 }
 
 void Word::ShowData(int level) {
-    if (level < 1) cout << Key << "\n";
-    if (level < 2) {
+    if (level >= 1) cout << Key << "\n";
+    if (level >= 2) {
         for (IntVecString &c: typeDefEx) {
             cout << "* " + GetDefString(c.F) + '\n';
             for (string &s: c.S) cout << " - " + s + '\n';
         }
     }
-    if (level < 3)
+    if (level >= 3)
         for (string &s: trans) cout << " " + s + ((s != trans.back()) ? "," : "\n");
+
 }
 
 //Outer Functionsssssssssssssssssssssssssssssssssssssss
@@ -124,7 +125,7 @@ void readData(vector<Word> &vietanh, ifstream &fin) {
             string tmp_ex;
             getline(fin, tmp_ex, '+');
             tmp_typeDefEx.second.push_back(tmp_ex);
-            getline(fin, tmp_ex, '\n');
+            getline(fin, tmp_ex, '\n' );
             tmp_typeDefEx.second.push_back(tmp_ex);
           }
         }

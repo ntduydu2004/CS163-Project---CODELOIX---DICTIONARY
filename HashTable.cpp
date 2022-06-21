@@ -131,3 +131,16 @@ void HashTable::FileInput(string &Filename) {
     Temp.clear();
 
 }
+
+void HashTable::ShowAllWord() {
+    for (int i = 0; i < N; ++i) {
+        if (List[i].pHead != nullptr) {
+            HashNode* current = List[i].pHead;
+            while (current != nullptr) {
+                current->data.ShowData(3);
+                current = current->pNext;
+            }
+        }
+        cout << '\n';
+    }
+}
