@@ -43,7 +43,7 @@ int HashTable::GetHash(string &s) {
     return res;
 }
 
-void HashTable::InsertNewWord(string &s) {
+void HashTable::InsertNewString(string &s) {
     int location = GetHash(s);
     if (List[location].pHead == nullptr) {
         HashNode* temp = new HashNode(s);
@@ -54,6 +54,13 @@ void HashTable::InsertNewWord(string &s) {
         List[location].pTail->pNext = temp;
         List[location].pTail = List[location].pTail->pNext;
     }
+}
+
+void HashTable::InsertNewWord(Word &W) {
+    InsertNewString(W.Key);
+    HashNode* Temp = FindWord(W.Key);
+
+    Temp->data = W;
 }
 
 void HashTable::displayChain() {
@@ -111,4 +118,29 @@ HashNode* HashTable::FindWord(string &s) {
     }
 
     return nullptr;
+}
+
+void HashTable::FileInput(string &Filename) {
+
+    ifstream fi(Filename);
+    vector <Word> Temp;
+    Temp.clear();
+    readData(Temp, fi);
+    fi.close();
+    for (Word &c: Temp) InsertNewWord(c);
+    Temp.clear();
+
+}
+
+void HashTable::ShowAllWord() {
+    for (int i = 0; i < N; ++i) {
+        if (List[i].pHead != nullptr) {
+            HashNode* current = List[i].pHead;
+            while (current != nullptr) {
+                current->data.ShowData(3);
+                current = current->pNext;
+            }
+        }
+        cout << '\n';
+    }
 }

@@ -1,4 +1,13 @@
 #include "function.h"
+
+#include "Word.h"
+#include "HashTable.h"
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+
 using namespace std;
 
 void runProgram() {
@@ -53,7 +62,7 @@ void runProgram() {
     }
     else if (choice == 4) {
         system("cls");
-        
+
     }
     else if (choice == 5) {
         system("cls");

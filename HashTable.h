@@ -23,9 +23,13 @@ struct HashTable {
     ~HashTable();
 
     int GetHash(std::string &s);
-    void InsertNewWord(std::string &s);
+    void InsertNewString(std::string &s);
+    void InsertNewWord(Word &W);
 
     void displayChain();
     void DeleteWord(std::string &s);
     HashNode* FindWord(std::string &s);
+
+    void FileInput(std::string &Filename);
+    void ShowAllWord();
 };
