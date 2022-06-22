@@ -7,22 +7,27 @@
 typedef std::vector <std::string> VecString;
 typedef std::pair <int, VecString > IntVecString;
 
+struct Int_VS_VS {
+    int Type;
+    VecString Exam; //
+    VecString Trans; //trans
+};
+
 struct Word
 {
     std::string Key = "";
-    std::vector <IntVecString> typeDefEx;
-    VecString trans;
+    std::vector <Int_VS_VS> typeDefEx;
 
     //Word(std::string &s);
     ~Word();
 
     void AddDef(int Def);
     void AddEx(int Def, std::string &Ex);
-    void AddTrans(std::string &Trans);
+    void AddTrans(int Def, std::string &Trans);
 
-    void ShowData(int level);
+    void ShowData(int level, std::string GetDef[]);
 };
 
-std::string GetDefString(int Def);
-int GetDefInt(std::string Def);
-void readData(std::vector<Word> &vietanh, std::ifstream &fin);
+std::string GetDefString(int Def, std::string GetDef[]);
+int GetDefInt(std::string Def, std::string GetDef[]);
+void readData(std::vector<Word> &vietanh, std::ifstream &fin, std::string GetDef[]);

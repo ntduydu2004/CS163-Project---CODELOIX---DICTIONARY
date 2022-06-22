@@ -1,4 +1,5 @@
 #include "Word.h"
+#include "Const.h"
 
 #include <iostream>
 #include <vector>
@@ -12,26 +13,30 @@ using namespace std;
     Key = s;
 }*/
 
-#define F first
-#define S second
+#define F Type
+#define S Exam
+#define T Trans
 
 Word::~Word() {
-    for (IntVecString &c: typeDefEx) {
+    for (Int_VS_VS &c: typeDefEx) {
         c.S.clear();
+        c.T.clear();
     }
     typeDefEx.clear();
-    trans.clear();
 }
 
 //Inner Functionsssssssssssssssssssssssssssssssssssssss
 
 void Word::AddDef(int Def) {
-    VecString vs;
-    typeDefEx.push_back({Def, vs});
+    for (Int_VS_VS &c: typeDefEx)
+        if (c.Type == Def) return;
+    VecString _Exam;
+    VecString _Trans;
+    typeDefEx.push_back({Def, _Exam, _Trans});
 }
 
 void Word::AddEx(int Def, string &Ex) {
-    for (IntVecString &c: typeDefEx) {
+    for (Int_VS_VS &c: typeDefEx) {
         if (c.F == Def) {
             c.S.push_back(Ex);
             return;
@@ -39,67 +44,55 @@ void Word::AddEx(int Def, string &Ex) {
     }
 }
 
-void Word::AddTrans(string &Trans) {
-    trans.push_back(Trans);
-}
-
-void Word::ShowData(int level) {
-    if (level >= 1) cout << Key << "\n";
-    if (level >= 2) {
-        for (IntVecString &c: typeDefEx) {
-            cout << "* " + GetDefString(c.F) + '\n';
-            for (string &s: c.S) cout << " - " + s + '\n';
+void Word::AddTrans(int Def, string &_Trans) {
+    for (Int_VS_VS &c: typeDefEx) {
+        if (c.F == Def) {
+            c.T.push_back(_Trans);
+            return;
         }
     }
-    if (level >= 3)
-        for (string &s: trans) cout << " " + s + ((s != trans.back()) ? "," : "\n");
+}
 
+void Word::ShowData(int level, string GetDef[]) {
+    if (level >= 1) cout << Key << "\n";
+    if (level >= 2) {
+        for (Int_VS_VS &c: typeDefEx) {
+            cout << "* " + GetDefString(c.F, GetDef) + '\n';
+            for (string &s: c.S) cout << " - " + s + '\n';
+            for (string &s: c.T) cout << " " + s + ((s != c.T.back()) ? "," : "\n");
+        }
+    }
 }
 
 //Outer Functionsssssssssssssssssssssssssssssssssssssss
 
-string GetDefString(int Def) {
-    if (Def == 1) return "noun";
-    if (Def == 2) return "adj";
-    if (Def == 3) return "verb";
-    if (Def == 4) return "excl";
-    if (Def == 5) return "tu dem";
-    if (Def == 6) return "pronoun";
-    if (Def == 7) return "adv";
-    if (Def == 8) return "emo";
-    return "unkn";
+string GetDefString(int Def, string GetDef[]) {
+    return GetDef[Def];
 }
 
-int GetDefInt(string Def) {
-    if (Def == "noun") return 1;
-    if (Def == "adj") return 2;
-    if (Def == "verb") return 3;
-    if (Def == "excl") return 4;
-    if (Def == "tu dem") return 5;
-    if (Def == "pronoun") return 6;
-    if (Def == "adv") return 7;
-    if (Def == "emo") return 8;
+int GetDefInt(string Def, string GetDef[]) {
+    for (int i = 0; i < DefN; i++) if (Def == GetDef[i]) return i;
     return 0;
 }
 
-void readData(vector<Word> &vietanh, ifstream &fin) {
+void readData(vector<Word> &vietanh, ifstream &fin, string GetDef[]) {
     while (!fin.eof()) {
         bool flag = false;
         Word toAdd;
         int type_count = 0;
         char prefix;
         string tmp_type;
-        IntVecString tmp_typeDefEx;
+        Int_VS_VS tmp_typeDefEx;
         while (fin >> prefix) {
           if (prefix == '@') {
             if (flag) {
               toAdd.typeDefEx.push_back(tmp_typeDefEx);
               vietanh.push_back(toAdd);
               type_count = 0;
-              tmp_typeDefEx.first = 0;
-              tmp_typeDefEx.second.clear();
+              tmp_typeDefEx.Type = 0;
+              tmp_typeDefEx.Exam.clear();
+              tmp_typeDefEx.Trans.clear();
               toAdd.typeDefEx.clear();
-              toAdd.trans.clear();
             }
             else {
               flag = true;
@@ -110,23 +103,24 @@ void readData(vector<Word> &vietanh, ifstream &fin) {
             ++type_count;
             if (type_count > 1) {
               toAdd.typeDefEx.push_back(tmp_typeDefEx);
-              tmp_typeDefEx.second.clear();
+              tmp_typeDefEx.Exam.clear();
+              tmp_typeDefEx.Trans.clear();
             }
 
             getline(fin, tmp_type, '\n');
-            tmp_typeDefEx.first = GetDefInt(tmp_type);
+            tmp_typeDefEx.Type = GetDefInt(tmp_type, GetDef);
           }
           else if (prefix == '-') {
             string tmp_trans;
             getline(fin, tmp_trans, '\n');
-            toAdd.trans.push_back(tmp_trans);
+            tmp_typeDefEx.Trans.push_back(tmp_trans);
           }
           else if (prefix == '=') {
             string tmp_ex;
             getline(fin, tmp_ex, '+');
-            tmp_typeDefEx.second.push_back(tmp_ex);
+            tmp_typeDefEx.Exam.push_back(tmp_ex);
             getline(fin, tmp_ex, '\n' );
-            tmp_typeDefEx.second.push_back(tmp_ex);
+            tmp_typeDefEx.Exam.push_back(tmp_ex);
           }
         }
         toAdd.typeDefEx.push_back(tmp_typeDefEx);
