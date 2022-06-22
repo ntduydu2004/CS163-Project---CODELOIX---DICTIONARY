@@ -119,7 +119,7 @@ void readData(vector<Word> &vietanh, ifstream &fin, string GetDef[]) {
             string tmp_ex;
             getline(fin, tmp_ex, '+');
             tmp_typeDefEx.Exam.push_back(tmp_ex);
-            getline(fin, tmp_ex, '\n' );
+            getline(fin, tmp_ex, '\n');
             tmp_typeDefEx.Exam.push_back(tmp_ex);
           }
         }
