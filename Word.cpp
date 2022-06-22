@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -117,10 +118,17 @@ void readData(vector<Word> &vietanh, ifstream &fin, string GetDef[]) {
           }
           else if (prefix == '=') {
             string tmp_ex;
-            getline(fin, tmp_ex, '+');
-            tmp_typeDefEx.Exam.push_back(tmp_ex);
-            getline(fin, tmp_ex, '\n' );
-            tmp_typeDefEx.Exam.push_back(tmp_ex);
+            getline(fin, tmp_ex, '\n');
+            if (tmp_ex.find("+") != -1) {
+                stringstream ss(tmp_ex);
+                getline(ss, tmp_ex, '+');
+                tmp_typeDefEx.Exam.push_back(tmp_ex);
+                getline(ss, tmp_ex, '\n' );
+                tmp_typeDefEx.Exam.push_back(tmp_ex);
+            }
+            else {
+                tmp_typeDefEx.Exam.push_back(tmp_ex);
+            }
           }
         }
         toAdd.typeDefEx.push_back(tmp_typeDefEx);

@@ -170,7 +170,7 @@
 @ac phu
 *noun
 -wicked woman
-=do la mot con ac_phu+That is a wicked woman
+=do la mot con ac phu+That is a wicked woman
 
 @ac quy
 *noun
