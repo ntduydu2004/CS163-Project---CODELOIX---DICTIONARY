@@ -318,8 +318,7 @@
 -To feel compassion for
 =thay lu tre bo vo, ai cung ai ngai+at the sight of those waifs and strays, everyone feels compassion for them
 
-@
--ai nu
+@ai nu
 *noun
 -Daughter
 
@@ -867,8 +866,7 @@
 -Glowing tunic, dress
 =ao dai cu tuong la sang boi khong ao ngan phai mang ao dai+tunics are no status symbol, they wear them for they have no short jackets
 
-@
--ao giap
+@ao giap
 *noun
 -Armour
 
@@ -1093,8 +1091,7 @@
 *verb
 -To take stealthy rake off, to get pickings, to appropriate part of profits
 
-@
--an canh
+@an canh
 *verb
 -To be in collusion with, to be in confederacy with, to be in cahoots with, to be hand in glove with
 =nguoi ta don rang mot vai nhan vien thue vu da an canh voi mot bang buon lau de lam bay+it is rumoured that some taxmen have been in collusion with a band of smugglers for evil-doing
@@ -6059,8 +6056,7 @@
 =thien tai la do co gang ben bi lau dai, dau phai mot thu bam sinh+genius is the result of long and enduring efforts and not something innate
 
 
-@
--bam tinh
+@bam tinh
 *noun
 -Innate character
 =bam tinh hien lanh+to be innately good-natured
@@ -9088,18 +9084,20 @@
 *noun
 -Multi-battalion (multi-regiment, multi-division, multi-army), corps (unit)
 
-@
--binh doi
--tu cu, nghia cu) Troops
+@binh doi
+*noun
+-(tu cu, nghia cu) Troops
 
 @binh gia
 *noun
 -Military
 
 @binh hoa
+*noun
 -(tu cu, nghia cu, van chuong) nhu binh lua
 
 @binh hoa
+*noun
 -(tu cu, nghia cu) Scourge of war
 
 @binh khi
@@ -9108,9 +9106,11 @@
 =phat huy tac dung cua binh khi+to make the most of weapons
 
 @binh kho
+*noun
 -(tu cu, nghia cu) Arms depot, military depot
 
 @binh linh
+*noun
 -Soldier, troops (noi khai quat)
 
 @binh luc
@@ -9121,15 +9121,19 @@
 =uu the binh luc+combat superiority
 
 @binh ma
+*noun
 -Troops and horses, military force
 
 @binh ngu
+*noun
 -(tu cu, nghia cu) Diffrent arms (of an army)
 
 @binh nhat
+*noun
 -First class private
 
 @binh nhi
+*noun
 -Private
 
 @binh nhu
@@ -13619,8 +13623,7 @@
 -To cut off, to separate, to isolate
 =vi o cach buc nhau nen it khi lui toi+their houses being cut off from one another, they see little of each other
 
-@
--cach chuc
+@cach chuc
 *verb
 -To dismiss from office, to relieve of one's function
 =cach chuc mot giam doc khong lam tron trach nhiem+to dismiss a director for lack of the sense of responsibility
@@ -16129,8 +16132,7 @@ dong tu To restrain; to hold on
 @cam lai
 -To take the helm, to be at the wheel, to hold the steering wheel, to steer
 
-@
--cam lai
+@cam lai
 *noun
 -Barian kingwood
 
@@ -19148,8 +19150,7 @@ dong tu To restrain; to hold on
 =soi len chap bon+four-ply wool thread
 -To put in direct contact (electric wire); to tangle (a watch hairspring..)
 
-@
--chap ma
+@chap ma
 -Visit one's ancestor tombs (at the end of the Lunar Year)
 
 @chap cha chap choang
@@ -19537,8 +19538,7 @@ dong tu To restrain; to hold on
 =chem to kho man+to attach more importance to substance than to form
 =chem tre khong de dau mat+to do something with little regard for the feeling of the people concerned
 
-@
--chem
+@chem
 *verb
 -To wedge
 =chem can cuoc+to wedge a hoe handle
@@ -20559,8 +20559,7 @@ dong tu To restrain; to hold on
 *verb
 -To fight, to combat, to struggle, to militate
 
-@
--chien dia
+@chien dia
 *noun
 -Battlefield
 
@@ -22978,8 +22977,7 @@ dong tu To restrain; to hold on
 -To drop (slip) quickly and neatly
 =chuoi goi qua vao tui+to drop quickly and neatly a present in a wrapping into (someone's) pocket
 
-@
--chuoi
+@chuoi
 *noun
 -String
 =chuoi ngoc+a string of pearls
@@ -26905,8 +26903,7 @@ dong tu To restrain; to hold on
 @dan cuoi
 -Bring wedding offerings (according to traditional rituals) to the brides
 
-@
--dan dat
+@dan dat
 -Guide, conduct, lead up to, direct
 =Biet cach dan dat cau chuyen+To know how to direct(to lead) the conversation up to (some subject)
 
@@ -29266,8 +29263,7 @@ dong tu To restrain; to hold on
 -Give full scope to one's abilities
 =Dat dung vo+a wide field of action (where one can give full scope to one's abilities)
 
-@
--dung y
+@dung y
 *verb
 -to intend to
 
@@ -30883,8 +30879,7 @@ dong tu To restrain; to hold on
 -Make up one's mind t, reconcile oneself to, resign oneself to
 =Khong co ao bong danh chiu ret+For want of a cotton-padded coat, he resigned himself to suffer from cold
 
-@
--danh da
+@danh da
 -Sharp-tongued, shrewish
 
 @danh da
@@ -34314,8 +34309,7 @@ dong tu To restrain; to hold on
 -Infer (fro what is known)
 =Cung doan chung the thoi, chua chac da dung+To infer a conclusion just like that without any certainly of correctness
 
-@
--doan dinh
+@doan dinh
 -Udge and decide
 =Giu toan quyen doan dinh+To hold a full right to udge ad decide
 
@@ -38902,8 +38896,7 @@ dong tu To restrain; to hold on
 -lay down one's arms
 =Tha chet khong chiu giai giap+Would rather die than lay down one''s arms; to perfer death to surrennder
 
-@
--giai han
+@giai han
 -Relieve (someone) of his run of bad luck
 
 @giai hoa
@@ -39238,8 +39231,7 @@ dong tu To restrain; to hold on
 -Streamline a staff by reducing it
 =Gian chinh bo may hanh chinh cong kenh+To streamline a cumbersome administrative machinery br reducing its staff
 
-@
--gian di
+@gian di
 *adj
 -easy; simple; plain
 =doi song gian di+The simple life
@@ -46695,8 +46687,7 @@ dong tu to push; to hurry; to urge
 @hoi duong
 -Resuscitative, having a resuscitative virtue (noi ve phuong thuoc)
 
-@
--Hoi giao
+@Hoi giao
 -Mohammedanism, Islam
 =Nha tho Hoi giao+An Islam temple, a mosque
 
@@ -46804,8 +46795,7 @@ dong tu to push; to hurry; to urge
 -Show repentance and desire to redeem one's faults
 =Khoan dung doi voi nguoi biet hoi cai+To lenient to those who show repentance and desire to redeem their faults
 
-@
--hoi doai
+@hoi doai
 *noun
 -exchange
 =so hoi doai+Foreign exchange office
