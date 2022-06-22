@@ -1,5 +1,6 @@
 #include "Word.h"
 #include "HashTable.h"
+#include "Const.h"
 
 #include <iostream>
 
@@ -12,10 +13,12 @@ HashNode::HashNode(string &_data) {
     data.Key = _data;
 }
 
-HashTable::HashTable(int _P, int _N) {
+HashTable::HashTable(int _P, int _N, string (&s)[DefN]) {
     P = _P;
     N = _N;
     List = new HashLinkedList [N];
+    GetDef = new string [DefN];
+    for (int i = 0; i < 9; i++) GetDef[i] = s[i];
 }
 
 HashTable::~HashTable() {
@@ -30,6 +33,7 @@ HashTable::~HashTable() {
         }
     }
 
+    delete [] GetDef;
     delete [] List;
 }
 
@@ -45,6 +49,7 @@ int HashTable::GetHash(string &s) {
 
 void HashTable::InsertNewString(string &s) {
     int location = GetHash(s);
+    if (FindWord(s) != nullptr) return;
     if (List[location].pHead == nullptr) {
         HashNode* temp = new HashNode(s);
         List[location].pHead = List[location].pTail = temp;
@@ -60,7 +65,11 @@ void HashTable::InsertNewWord(Word &W) {
     InsertNewString(W.Key);
     HashNode* Temp = FindWord(W.Key);
 
-    Temp->data = W;
+    for (Int_VS_VS &c: W.typeDefEx) {
+        Temp->data.AddDef(c.Type);
+        for (string &s: c.Exam) Temp->data.AddEx(c.Type, s);
+        for (string &s: c.Trans) Temp->data.AddTrans(c.Type, s);
+    }
 }
 
 void HashTable::displayChain() {
@@ -125,7 +134,7 @@ void HashTable::FileInput(string &Filename) {
     ifstream fi(Filename);
     vector <Word> Temp;
     Temp.clear();
-    readData(Temp, fi);
+    readData(Temp, fi, GetDef);
     fi.close();
     for (Word &c: Temp) InsertNewWord(c);
     Temp.clear();
@@ -137,7 +146,7 @@ void HashTable::ShowAllWord() {
         if (List[i].pHead != nullptr) {
             HashNode* current = List[i].pHead;
             while (current != nullptr) {
-                current->data.ShowData(3);
+                current->data.ShowData(3, GetDef);
                 current = current->pNext;
             }
         }

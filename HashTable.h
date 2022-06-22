@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Word.h"
+#include "Const.h"
 
 struct HashNode {
     Word data;
@@ -18,8 +19,9 @@ struct HashLinkedList {
 struct HashTable {
     int P, N;
     HashLinkedList *List;
+    std::string *GetDef;
 
-    HashTable(int _P, int _N);
+    HashTable(int _P, int _N, std::string (&s)[DefN]);
     ~HashTable();
 
     int GetHash(std::string &s);
