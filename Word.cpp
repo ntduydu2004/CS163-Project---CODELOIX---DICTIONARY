@@ -146,3 +146,8 @@ void readData(vector <Word> &vietanh, ifstream &fin, VecString &GetDef) {
         vietanh.push_back(toAdd);
     }
 }
+
+
+void AddDef(string &Def, VecString &GetDef) {
+    if (GetDefInt(Def, GetDef) == oo) GetDef.push_back(Def);
+}

@@ -12,13 +12,13 @@ int main() {
 
     //HashTable VietAnh(31, 14027, GetDefVA); //Init(P, N) (P < N, Better if P and N are prime numbers)
 
-    string FilePath = "Data/";
-    string FileName = "vietanh.txt";
+    string VietAnhFilePath = "Data/";
+    string VietAnhFileName = "vietanh.txt";
 
-    string File = FilePath + FileName;
+    string VietAnhFile = VietAnhFilePath + VietAnhFileName;
 
     HashTable VietAnh(31, 14067);
-    VietAnh.FileInput(File);
+    VietAnh.FileInput(VietAnhFile);
 
     //ios_base::sync_with_stdio(0);
     //cin.tie(0);
@@ -39,5 +39,14 @@ int main() {
         Temp->data.ShowData(3, VietAnh.GetDef);
         Temp = nullptr;
     }
+
+    /*string AnhVietFilePath = "Data/";
+    string AnhVietFileName = "AVdata.txt";
+
+    string AnhVietFile = AnhVietFilePath + AnhVietFileName;
+
+    HashTable AnhViet(3, 7);
+    AnhViet.FileInput(AnhVietFile);
+    AnhViet.ShowAllWord();*/
     return 0;
 }

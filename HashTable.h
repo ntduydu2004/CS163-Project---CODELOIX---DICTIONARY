@@ -28,7 +28,6 @@ struct HashTable {
     int GetHash(std::string &s);
     void InsertNewString(std::string &s);
     void InsertNewWord(Word &W);
-    void AddDef(std::string &Def);
 
     void displayChain();
     void DeleteWord(std::string &s);
@@ -37,3 +36,4 @@ struct HashTable {
     void FileInput(std::string &Filename);
     void ShowAllWord();
 };
+
