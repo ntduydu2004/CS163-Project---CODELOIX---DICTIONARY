@@ -71,10 +71,6 @@ void HashTable::InsertNewWord(Word &W) {
     }
 }
 
-void HashTable::AddDef(string &Def) {
-    if (GetDefInt(Def, GetDef) == oo) GetDef.push_back(Def);
-}
-
 void HashTable::displayChain() {
     for (int i = 0; i < N; ++i) {
         cout << "Key" << " " << i << " :";
@@ -156,3 +152,4 @@ void HashTable::ShowAllWord() {
         cout << '\n';
     }
 }
+

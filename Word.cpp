@@ -111,6 +111,7 @@ void readData(vector <Word> &vietanh, ifstream &fin, VecString &GetDef) {
             }
 
             getline(fin, tmp_type, '\n');
+            AddDef(tmp_type, GetDef);
             tmp_typeDefEx.Type = GetDefInt(tmp_type, GetDef);
           }
           else if (prefix == '-') {
@@ -136,4 +137,9 @@ void readData(vector <Word> &vietanh, ifstream &fin, VecString &GetDef) {
         toAdd.typeDefEx.push_back(tmp_typeDefEx);
         vietanh.push_back(toAdd);
     }
+}
+
+
+void AddDef(string &Def, VecString &GetDef) {
+    if (GetDefInt(Def, GetDef) == oo) GetDef.push_back(Def);
 }

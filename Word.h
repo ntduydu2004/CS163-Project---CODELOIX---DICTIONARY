@@ -31,3 +31,4 @@ struct Word
 std::string GetDefString(int Def, std::vector <std::string> &GetDef);
 int GetDefInt(std::string Def, std::vector <std::string> &GetDef);
 void readData(std::vector<Word> &vietanh, std::ifstream &fin, std::vector <std::string> &GetDef);
+void AddDef(std::string &Def, std::vector <std::string> &GetDef);
