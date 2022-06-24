@@ -7,7 +7,7 @@ using namespace std;
 
 #include "Word.h"
 #include "HashTable.h"
-
+#include "function.h"
 int main() {
 
     //HashTable VietAnh(31, 14027, GetDefVA); //Init(P, N) (P < N, Better if P and N are prime numbers)
@@ -24,7 +24,8 @@ int main() {
     //cin.tie(0);
 
     //VietAnh.ShowAllWord();
-
+    runProgram(1);
+    
     while (1) {
         string word;
         getline(cin, word);

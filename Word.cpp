@@ -28,51 +28,59 @@ Word::~Word() {
 
 //Inner Functionsssssssssssssssssssssssssssssssssssssss
 
-void Word::AddDef(int Def) {
+void Word::AddType(int Type) {
     for (Int_VS_VS &c: typeDefEx)
-        if (c.Type == Def) return;
-    VecString _Exam;
+        if (c.Type == Type) return;
     VecString _Trans;
-    typeDefEx.push_back({Def, _Exam, _Trans});
+    vector <VecString> _Exams;
+    typeDefEx.push_back({Type, _Trans, _Exams});
 }
 
-void Word::AddEx(int Def, string &Ex) {
+void Word::AddEx(int Type, int Trans, string &Ex) {// Trans index tu 1 den n
     for (Int_VS_VS &c: typeDefEx) {
-        if (c.F == Def) {
-            c.S.push_back(Ex);
+        if (c.F == Type) {
+            c.S[Trans - 1].push_back(Ex);
             return;
         }
     }
 }
 
-void Word::AddTrans(int Def, string &_Trans) {
+void Word::AddTrans(int Type, string &_Trans) {
     for (Int_VS_VS &c: typeDefEx) {
-        if (c.F == Def) {
+        if (c.F == Type) {
             c.T.push_back(_Trans);
+            c.S.resize(c.S.size() + 1);
             return;
         }
     }
 }
 
-void Word::ShowData(int level, VecString &GetDef) {
+void Word::ShowData(int level, VecString &GetType) {
     if (level >= 1) cout << Key << "\n";
     if (level >= 2) {
         for (Int_VS_VS &c: typeDefEx) {
-            cout << "* " + GetDefString(c.F, GetDef) + '\n';
-            for (string &s: c.S) cout << " - " + s + '\n';
-            for (string &s: c.T) cout << " " + s + ((s != c.T.back()) ? "," : ".\n");
+            cout << "* " + GetTypeString(c.F, GetType) + '\n';
+            for (int i = 0; i < c.T.size() - 1; i++){
+                cout << " - " << c.T[i] <<  endl;
+                if (!c.S[i].empty()){
+                    cout << " Example:" << endl;
+                    for (int j = 0; j < c.S[i].size(); j++){
+                        cout << "  +" << c.S[i][j] << endl;
+                    }
+                }
+            }
         }
     }
 }
 
 //Outer Functionsssssssssssssssssssssssssssssssssssssss
 
-string GetDefString(int Def, VecString &GetDef) {
-    if (Def >= int(GetDef.size())) return "unknown";
-    return GetDef[Def];
+string GetTypeString(int Type, VecString &GetType) {
+    if (Type >= int(GetType.size())) return "unknown";
+    return GetType[Type];
 }
 
-int GetDefInt(string Def, VecString &GetDef) {
+int GetTypeInt(string Def, VecString &GetDef) {
     for (int i = 0; i < int(GetDef.size()); i++)
             if (Def == GetDef[i]) return i;
     return oo;
@@ -103,20 +111,21 @@ void readData(vector <Word> &vietanh, ifstream &fin, VecString &GetDef) {
             getline(fin, toAdd.Key, '\n');
           }
           else if (prefix == '*') {
-            ++type_count;
-            if (type_count > 1) {
+            if (type_count > 0) {
               toAdd.typeDefEx.push_back(tmp_typeDefEx);
               tmp_typeDefEx.Exam.clear();
               tmp_typeDefEx.Trans.clear();
             }
 
             getline(fin, tmp_type, '\n');
-            tmp_typeDefEx.Type = GetDefInt(tmp_type, GetDef);
+            tmp_typeDefEx.Type = GetTypeInt(tmp_type, GetDef);
+            ++type_count;
           }
           else if (prefix == '-') {
             string tmp_trans;
             getline(fin, tmp_trans, '\n');
             tmp_typeDefEx.Trans.push_back(tmp_trans);
+            tmp_typeDefEx.Exam.resize(tmp_typeDefEx.Exam.size() + 1);
           }
           else if (prefix == '=') {
             string tmp_ex;
@@ -124,12 +133,12 @@ void readData(vector <Word> &vietanh, ifstream &fin, VecString &GetDef) {
             if (tmp_ex.find("+") != string::npos) {
                 stringstream ss(tmp_ex);
                 getline(ss, tmp_ex, '+');
-                tmp_typeDefEx.Exam.push_back(tmp_ex);
+                tmp_typeDefEx.Exam.back().push_back(tmp_ex);
                 getline(ss, tmp_ex, '\n' );
-                tmp_typeDefEx.Exam.push_back(tmp_ex);
+                tmp_typeDefEx.Exam.back().push_back(tmp_ex);
             }
             else {
-                tmp_typeDefEx.Exam.push_back(tmp_ex);
+                tmp_typeDefEx.Exam.back().push_back(tmp_ex);
             }
           }
         }

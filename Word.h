@@ -9,8 +9,8 @@ typedef std::pair <int, VecString > IntVecString;
 
 struct Int_VS_VS {
     int Type;
-    VecString Exam; //
-    VecString Trans; //trans
+    VecString Trans;// 1 type contains many trans
+    vector<VecString> Exam; // 1 trans contains many examples
 };
 
 struct Word
@@ -21,13 +21,13 @@ struct Word
     //Word(std::string &s);
     ~Word();
 
-    void AddDef(int Def);
-    void AddEx(int Def, std::string &Ex);
+    void AddType(int Type);
+    void AddEx(int Def, int Trans, string &Ex);
     void AddTrans(int Def, std::string &Trans);
 
     void ShowData(int level, std::vector <std::string> &GetDef);
 };
 
-std::string GetDefString(int Def, std::vector <std::string> &GetDef);
-int GetDefInt(std::string Def, std::vector <std::string> &GetDef);
+std::string GetTypeString(int Type, VecString &GetType) ;
+int GetTypeInt(std::string Def, VecString &GetDef) ;
 void readData(std::vector<Word> &vietanh, std::ifstream &fin, std::vector <std::string> &GetDef);
