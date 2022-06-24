@@ -1,10 +1,99 @@
 #include "function.h"
 
-#include "Word.h"
 #include "HashTable.h"
 
 using namespace std;
 
+void MenuSearch(){
+    cout << setw(105) << " " << "1. Search by Keyword" << endl;
+    cout << setw(105) << " " << "2. Search by Definition" << endl;
+    cout << setw(105) << " " << "3. View Search History" << endl;
+    cout << setw(105) << " " << "4. Back" << endl;
+    cout << setw(105) << " " << "Your choice: ";
+}
+Word InputnewWord(){
+    Word p;
+    cout << "Input word: ";
+    cin >> p.Key;
+    while (true){
+        cout << "What is the type of this word? (Enter None to exit): ";
+        string tmp1;
+        getline(cin, tmp1);
+        if (tmp1 == "None") break;
+        int x = GetTypeInt(tmp1, GetType);
+        p.AddType(x);
+        while (true){
+            cout << "What is the meaning of this word? (Enter None to exit): ";
+            string tmp2;
+            getline(cin, tmp2);
+            if (tmp2 == "None") break;
+            p.AddTrans(x, tmp2);
+            int y = p.typeDefEx.size() - 1;
+            while (true){
+                cout << "What example you can give for this meaning? (Enter None to exit): ";
+                string tmp3;
+                getline(cin, tmp3);
+                if (tmp3 == "None") break;
+                p.AddEx(x, y, tmp3);
+            }
+        }
+    }
+    return p;
+}
+void AddnewWord(){
+    cout << "1. Add by hand" << endl;
+    cout << "2. Add by a text file" << endl;
+    cout << "3. back" << endl;
+    cout << "Choose: ";
+    int tmp;
+    cin >> tmp;
+    switch (tmp)
+    {
+        case 1:
+        {
+            cout << "1. English to Vietnamese" << endl;
+            cout << "2. Vietnamese to English" << endl;
+            cout << "3. English to English" << endl;
+            cout << "4. Back" << endl;
+            cout << "Choose the form you want to add " << endl;
+
+            cin >> tmp;
+            switch(tmp)
+            {
+                case 1:
+                {
+                    Word p = InputnewWord();
+                }
+                case 2:
+                {
+
+                }
+                case 3:
+                {
+
+                }
+                case 4:
+                {
+                    AddnewWord();
+                    break;
+                }
+            }
+        }
+
+        case 2:
+        {
+
+        }
+        case 3:
+        {
+            runProgram(1);
+            break;
+        }
+    }
+}
+void LoadFavoriteList(){
+
+}
 void Mainmenu(int type){
     // type = 1: Anh Viet
     // type = 2: Viet Anh
@@ -46,11 +135,7 @@ void runProgram(int type) {
     }
     else if (choice == 2) {
         system("cls");
-        cout << setw(105) << " " << "1. Search by Keyword" << endl;
-        cout << setw(105) << " " << "2. Search by Definition" << endl;
-        cout << setw(105) << " " << "3. View Search History" << endl;
-        cout << setw(105) << " " << "4. Back" << endl;
-        cout << setw(105) << " " << "Your choice: ";
+
         cin >> temp;
         if (temp == 4) {
             runProgram(type);
@@ -66,9 +151,30 @@ void runProgram(int type) {
         cout << setw(105) << " " << "5. Back" << endl;
         cout << setw(105) << " " << "Your choice: ";
         cin >> temp;
-        if (temp == 5) {
-            runProgram(type);
-            return;
+        switch(temp)
+        {
+            case 1:
+            {
+                AddnewWord();
+                break;
+            }
+            case 2:
+            {
+
+            }
+            case 3:
+            {
+
+            }
+            case 4:
+            {
+
+            }
+            case 5:
+            {
+                runProgram(type);
+                break;
+            }
         }
     }
     else if (choice == 4) {
@@ -121,7 +227,7 @@ void saveHistory(vector<string> hisSearch) {
     fout.close();
 }
 
-void loadHistoryFile(vector<string> &hisSearch) {
+vector <string> loadHistoryFile() {
     ifstream fin;
     vector<string> hisSearch;
     string filePath = "Data/his.txt", temp;

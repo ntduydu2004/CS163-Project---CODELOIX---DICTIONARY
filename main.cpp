@@ -9,6 +9,8 @@ using namespace std;
 #include "HashTable.h"
 #include "function.h"
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
     //HashTable VietAnh(31, 14027, GetDefVA); //Init(P, N) (P < N, Better if P and N are prime numbers)
 
@@ -20,8 +22,6 @@ int main() {
     HashTable VietAnh(31, 14067);
     VietAnh.FileInput(VietAnhFile);
 
-    //ios_base::sync_with_stdio(0);
-    //cin.tie(0);
 
     //VietAnh.ShowAllWord();
     runProgram(1);

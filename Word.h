@@ -32,3 +32,4 @@ std::string GetTypeString(int Type, VecString &GetType) ;
 int GetTypeInt(std::string Def, VecString &GetDef) ;
 void readData(std::vector<Word> &vietanh, std::ifstream &fin, std::vector <std::string> &GetDef);
 void AddDef(std::string &Def, std::vector <std::string> &GetDef);
+extern VecString GetType;
