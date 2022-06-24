@@ -54,29 +54,31 @@ void Word::AddTrans(int Def, string &_Trans) {
     }
 }
 
-void Word::ShowData(int level, string GetDef[]) {
+void Word::ShowData(int level, VecString &GetDef) {
     if (level >= 1) cout << Key << "\n";
     if (level >= 2) {
         for (Int_VS_VS &c: typeDefEx) {
             cout << "* " + GetDefString(c.F, GetDef) + '\n';
             for (string &s: c.S) cout << " - " + s + '\n';
-            for (string &s: c.T) cout << " " + s + ((s != c.T.back()) ? "," : "\n");
+            for (string &s: c.T) cout << " " + s + ((s != c.T.back()) ? "," : ".\n");
         }
     }
 }
 
 //Outer Functionsssssssssssssssssssssssssssssssssssssss
 
-string GetDefString(int Def, string GetDef[]) {
+string GetDefString(int Def, VecString &GetDef) {
+    if (Def >= int(GetDef.size())) return "unknown";
     return GetDef[Def];
 }
 
-int GetDefInt(string Def, string GetDef[]) {
-    for (int i = 0; i < DefN; i++) if (Def == GetDef[i]) return i;
-    return 0;
+int GetDefInt(string Def, VecString &GetDef) {
+    for (int i = 0; i < int(GetDef.size()); i++)
+            if (Def == GetDef[i]) return i;
+    return oo;
 }
 
-void readData(vector<Word> &vietanh, ifstream &fin, string GetDef[]) {
+void readData(vector <Word> &vietanh, ifstream &fin, VecString &GetDef) {
     while (!fin.eof()) {
         bool flag = false;
         Word toAdd;
@@ -119,7 +121,7 @@ void readData(vector<Word> &vietanh, ifstream &fin, string GetDef[]) {
           else if (prefix == '=') {
             string tmp_ex;
             getline(fin, tmp_ex, '\n');
-            if (tmp_ex.find("+") != -1) {
+            if (tmp_ex.find("+") != string::npos) {
                 stringstream ss(tmp_ex);
                 getline(ss, tmp_ex, '+');
                 tmp_typeDefEx.Exam.push_back(tmp_ex);

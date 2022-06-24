@@ -25,9 +25,9 @@ struct Word
     void AddEx(int Def, std::string &Ex);
     void AddTrans(int Def, std::string &Trans);
 
-    void ShowData(int level, std::string GetDef[]);
+    void ShowData(int level, std::vector <std::string> &GetDef);
 };
 
-std::string GetDefString(int Def, std::string GetDef[]);
-int GetDefInt(std::string Def, std::string GetDef[]);
-void readData(std::vector<Word> &vietanh, std::ifstream &fin, std::string GetDef[]);
+std::string GetDefString(int Def, std::vector <std::string> &GetDef);
+int GetDefInt(std::string Def, std::vector <std::string> &GetDef);
+void readData(std::vector<Word> &vietanh, std::ifstream &fin, std::vector <std::string> &GetDef);

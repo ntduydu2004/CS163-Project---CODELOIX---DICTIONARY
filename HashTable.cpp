@@ -13,12 +13,11 @@ HashNode::HashNode(string &_data) {
     data.Key = _data;
 }
 
-HashTable::HashTable(int _P, int _N, string (&s)[DefN]) {
+HashTable::HashTable(int _P, int _N) {
     P = _P;
     N = _N;
     List = new HashLinkedList [N];
-    GetDef = new string [DefN];
-    for (int i = 0; i < 9; i++) GetDef[i] = s[i];
+    GetDef.clear();
 }
 
 HashTable::~HashTable() {
@@ -33,7 +32,7 @@ HashTable::~HashTable() {
         }
     }
 
-    delete [] GetDef;
+    GetDef.clear();
     delete [] List;
 }
 
@@ -70,6 +69,10 @@ void HashTable::InsertNewWord(Word &W) {
         for (string &s: c.Exam) Temp->data.AddEx(c.Type, s);
         for (string &s: c.Trans) Temp->data.AddTrans(c.Type, s);
     }
+}
+
+void HashTable::AddDef(string &Def) {
+    if (GetDefInt(Def, GetDef) == oo) GetDef.push_back(Def);
 }
 
 void HashTable::displayChain() {

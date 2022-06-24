@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+
 #include "Word.h"
 #include "Const.h"
 
@@ -19,14 +20,15 @@ struct HashLinkedList {
 struct HashTable {
     int P, N;
     HashLinkedList *List;
-    std::string *GetDef;
+    std::vector <std::string> GetDef;
 
-    HashTable(int _P, int _N, std::string (&s)[DefN]);
+    HashTable(int _P, int _N);
     ~HashTable();
 
     int GetHash(std::string &s);
     void InsertNewString(std::string &s);
     void InsertNewWord(Word &W);
+    void AddDef(std::string &Def);
 
     void displayChain();
     void DeleteWord(std::string &s);
