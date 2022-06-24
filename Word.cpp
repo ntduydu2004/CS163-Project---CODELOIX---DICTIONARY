@@ -39,7 +39,7 @@ void Word::AddType(int Type) {
 void Word::AddEx(int Type, int Trans, string &Ex) {// Trans index tu 1 den n
     for (Int_VS_VS &c: typeDefEx) {
         if (c.F == Type) {
-            c.S[Trans - 1].push_back(Ex);
+            c.S[Trans].push_back(Ex);
             return;
         }
     }
@@ -149,5 +149,5 @@ void readData(vector <Word> &vietanh, ifstream &fin, VecString &GetDef) {
 
 
 void AddDef(string &Def, VecString &GetDef) {
-    if (GetDefInt(Def, GetDef) == oo) GetDef.push_back(Def);
+    if (GetTypeInt(Def, GetDef) == oo) GetDef.push_back(Def);
 }

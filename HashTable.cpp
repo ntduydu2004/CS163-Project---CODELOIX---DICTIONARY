@@ -65,9 +65,13 @@ void HashTable::InsertNewWord(Word &W) {
     HashNode* Temp = FindWord(W.Key);
 
     for (Int_VS_VS &c: W.typeDefEx) {
-        Temp->data.AddDef(c.Type);
-        for (string &s: c.Exam) Temp->data.AddEx(c.Type, s);
-        for (string &s: c.Trans) Temp->data.AddTrans(c.Type, s);
+        Temp->data.AddType(c.Type);
+        for (int i = 0; i < c.Trans.size(); i++){
+            Temp->data.AddTrans(c.Type, c.Trans[i]);
+            for (int j = 0; j < c.Exam[i].size(); i++){
+                Temp->data.AddEx(c.Type, i, c.Exam[i][j]);
+            }
+        }
     }
 }
 
