@@ -96,3 +96,33 @@ void runProgram() {
         runProgram();
     }
 }
+
+void saveHistory(vector<string> hisSearch) {
+    ofstream fout;
+    string filePath = "Data/his.txt";
+    fout.open(filePath);
+    for (int i = 0; i < hisSearch.size(); ++i) {
+        fout << hisSearch[i] << endl;
+    }
+    fout.close();
+}
+
+vector<string> loadHistory() {
+    ifstream fin;
+    vector<string> hisSearch;
+    string filePath = "Data/his.txt", temp;
+    fin.open(filePath);
+    while(!fin.eof()) {
+        fin >> temp;
+        hisSearch.push_back(temp);
+    }
+    fin.close();
+    return hisSearch;
+}
+
+void displayHistory(vector<string> hisSearch) {
+    cout << setw(93) << "Search History" << endl; 
+    for (int i = 0; i < hisSearch.size(); ++i) {
+        cout << setw(93) << " " << i + 1 << ". " << hisSearch[i] << endl;
+    }
+}
