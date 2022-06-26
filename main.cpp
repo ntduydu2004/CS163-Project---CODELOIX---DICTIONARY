@@ -26,18 +26,10 @@ int main() {
     //VietAnh.ShowAllWord();
     runProgram(1);
     
-    while (1) {
-        string word;
-        getline(cin, word);
+    string word;
+    while (getline(cin, word) && word != "stop") {
         //cin.ignore();
-        if (word == "stop") break;
-        HashNode* Temp = VietAnh.FindWord(word);
-        if (Temp == nullptr) {
-            cout << "Cannot found " + word + "!\n";
-            continue;
-        }
-        Temp->data.ShowData(3, VietAnh.GetDef);
-        Temp = nullptr;
+        search(word, VietAnh);
     }
 
     /*string AnhVietFilePath = "Data/";

@@ -1,7 +1,5 @@
 #include "function.h"
 
-#include "HashTable.h"
-
 using namespace std;
 
 void MenuSearch(){
@@ -43,7 +41,7 @@ Word InputnewWord(){
 void AddnewWord(){
     cout << "1. Add by hand" << endl;
     cout << "2. Add by a text file" << endl;
-    cout << "3. back" << endl;
+    cout << "3. Back" << endl;
     cout << "Choose: ";
     int tmp;
     cin >> tmp;
@@ -244,4 +242,16 @@ void displayHistory(vector<string> hisSearch) {
     for (int i = 0; i < hisSearch.size(); ++i) {
         cout << setw(93) << " " << i + 1 << ". " << hisSearch[i] << endl;
     }
+}
+
+// search function
+void search(string to_search, HashTable t) {
+    HashNode* in_hash = t.FindWord(to_search);
+    if (!in_hash) {
+        cout << "No result found!" << endl;
+        return;
+    }
+    in_hash->data.ShowData(2, t.GetDef);
+    delete in_hash;
+    in_hash = nullptr;
 }
