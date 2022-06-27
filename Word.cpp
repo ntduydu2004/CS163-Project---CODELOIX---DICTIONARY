@@ -147,6 +147,23 @@ void readData(vector <Word> &vietanh, ifstream &fin, VecString &GetDef) {
     }
 }
 
+void readSlang(vector<Word> &Slang, ifstream &fin) {
+  while (!fin.eof()) {
+    bool is_multi = false;
+    Word to_add;
+    string line;
+    getline(fin, line, '\n');
+    if (line.find('|') != -1) is_multi = true;
+    stringstream ss(line);
+    getline(ss, to_add.Key, '`');
+    string tmp_trans;
+    while (ss.good()) {
+      getline(ss, tmp_trans, '|');
+      to_add.typeDefEx[0].Trans.push_back(tmp_trans);
+    }
+    Slang.push_back(to_add);
+  }
+}
 
 void AddDef(string &Def, VecString &GetDef) {
     if (GetTypeInt(Def, GetDef) == oo) GetDef.push_back(Def);
